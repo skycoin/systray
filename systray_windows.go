@@ -966,7 +966,7 @@ func SetTooltip(tooltip string) {
 
 func addOrUpdateMenuItem(item *MenuItem) {
 	err := wt.addOrUpdateMenuItem(uint32(item.id), item.parentId(), item.title, item.disabled, item.checked)
-	if err != nil {
+	if err != nil && err.Error() != "The operation completed successfully." {
 		log.Printf("systray error: unable to addOrUpdateMenuItem: %s\n", err)
 		return
 	}
